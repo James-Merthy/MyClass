@@ -11,7 +11,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Personne {
-
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;

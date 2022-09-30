@@ -3,6 +3,7 @@ package bxl.mapper;
 import bxl.model.dto.ProfDTO;
 import bxl.model.entities.Eleve;
 import bxl.model.entities.Prof;
+import bxl.model.forms.ProfInsertForm;
 import bxl.model.forms.ProfUpdateForm;
 import org.springframework.stereotype.Component;
 
@@ -43,7 +44,23 @@ public class ProfMapper {
 
     }
 
-    public Prof toEntity(ProfUpdateForm form){
+//    public Prof toEntityUpdate(ProfUpdateForm form){
+//
+//        if( form == null )
+//            throw new IllegalArgumentException();
+//
+//        Prof entity = new Prof ();
+//
+//        entity.setPrenom(form.getPrenom());
+//        entity.setNom(form.getNom());
+//        entity.getClasse();
+//        entity.getListLecon().add(form.getLecon());
+//
+//        return entity;
+//
+//    }
+
+    public Prof toEntity(ProfInsertForm form){
 
         if( form == null )
             throw new IllegalArgumentException();
@@ -53,9 +70,11 @@ public class ProfMapper {
         entity.setPrenom(form.getPrenom());
         entity.setNom(form.getNom());
         entity.getClasse();
-        entity.getListLecon().add(form.getLecon());
+        entity.getListLecon();
+
 
         return entity;
 
     }
+
 }

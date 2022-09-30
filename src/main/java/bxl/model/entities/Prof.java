@@ -1,5 +1,6 @@
 package bxl.model.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,7 +12,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-
+@AllArgsConstructor
 public class Prof extends Personne {
 
     @OneToMany(mappedBy = "prof")
@@ -21,4 +22,7 @@ public class Prof extends Personne {
     @JoinColumn(name = "id" ,referencedColumnName = "classe_id")
     private Local classe;
 
+    public Prof(String prenom, String nom) {
+        super(prenom, nom);
+    }
 }

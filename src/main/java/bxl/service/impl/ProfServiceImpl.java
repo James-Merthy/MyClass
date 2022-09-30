@@ -2,10 +2,10 @@ package bxl.service.impl;
 
 import bxl.mapper.ProfMapper;
 import bxl.model.dto.ProfDTO;
+import bxl.model.entities.Prof;
 import bxl.model.forms.ProfInsertForm;
 import bxl.model.forms.ProfUpdateForm;
 import bxl.repository.ProfRespository;
-import bxl.service.EleveService;
 import bxl.service.ProfService;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,11 @@ public class ProfServiceImpl implements ProfService {
 
     @Override
     public ProfDTO create(ProfInsertForm toInsert) {
-        return null;
+
+        Prof prof = profMapper.toEntity((toInsert));
+        prof = profRespository.save(prof);
+
+        return profMapper.toDto(prof);
     }
 
     @Override
