@@ -33,5 +33,13 @@ public class Local {
     @OneToMany(mappedBy = "classe")
     private Set<Lecon> listLecon = new HashSet<>();
 
+    public Local(String nom) {
+        this.nom = nom;
+    }
 
+    public Local(String nom, Prof professeur) {
+        this.nom = nom;
+        this.professeur = professeur;
+
+    }
 }

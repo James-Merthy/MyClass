@@ -29,5 +29,13 @@ public class Lecon {
     @JoinColumn(name = "classe_id" , nullable = false)
     private Local classe;
 
+    public Lecon(String nom) {
+        this.nom = nom;
+    }
 
+    public Lecon(String nom, Prof prof, Local classe) {
+        this.nom = nom;
+        this.prof = prof;
+        this.classe = classe;
+    }
 }

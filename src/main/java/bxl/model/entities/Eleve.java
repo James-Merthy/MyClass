@@ -28,4 +28,8 @@ public class Eleve extends Personne{
         super(prenom, nom);
         this.classe = classe;
     }
+
+    public Eleve(String prenom, String nom) {
+        super(prenom, nom);
+    }
 }
