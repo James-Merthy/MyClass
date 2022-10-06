@@ -33,30 +33,30 @@ public class DataInit implements InitializingBean {
             new Utilisateur("prof1", new BCryptPasswordEncoder().encode("pass"), true, List.of("PROF")),
             new Utilisateur("prof2", new BCryptPasswordEncoder().encode("pass"), true, List.of("PROF")),
             new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
-            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT"))
+            new Utilisateur("eleve2", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve3", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve4", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve5", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve6", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve7", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve8", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve9", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve10", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve11", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve12", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve13", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve14", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve15", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve16", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve17", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve18", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve19", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve20", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve21", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve22", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve23", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve24", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT")),
+            new Utilisateur("eleve25", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT"))
 
 
     );
@@ -107,7 +107,7 @@ public class DataInit implements InitializingBean {
             new Eleve ("Laura" , "Lokombe", utilisateurs.get(25), local.get(1)),
             new Eleve ("Frédaric" , "Kalonda", utilisateurs.get(26), local.get(1)),
             new Eleve ("Marie" , "Van De Paule", utilisateurs.get(27), local.get(1)),
-            new Eleve ("Jack" , "Daniels", utilisateurs.get(28), local.get(1))
+            new Eleve ("Jack" , "Daniels", utilisateurs.get(8), local.get(1))
     );
 
     @Override

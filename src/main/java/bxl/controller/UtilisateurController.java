@@ -35,7 +35,7 @@ public class UtilisateurController {
         service.create(form);
     }
 
-    @GetMapping("/login")
+    @PostMapping ("/login")
     public String login(@Valid @RequestBody LoginForm form){
         Authentication auth = authManager.authenticate(new UsernamePasswordAuthenticationToken(form.getUsername(), form.getPassword()));
         return jwtProvider.createToken(auth);

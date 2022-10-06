@@ -14,12 +14,12 @@ import java.util.Set;
 public class ProfMapper {
 
     private final UtilisateurRespository utilisateurRespository ;
-    private final LocalMapper localMapper;
 
 
-    public ProfMapper(UtilisateurRespository utilisateurRespository, LocalMapper localMapper) {
+
+    public ProfMapper(UtilisateurRespository utilisateurRespository) {
         this.utilisateurRespository = utilisateurRespository;
-        this.localMapper = localMapper;
+
     }
 
 
@@ -39,8 +39,6 @@ public class ProfMapper {
                 .id( entity.getId() )
                 .prenom( entity.getPrenom() )
                 .nom( entity.getNom() )
-                .classe(entity.getClasse())
-                .lecons(lecon)
                 .userId(entity.getUtilisateur().getId())
                 .username(entity.getUtilisateur().getUsername())
                 .build();
