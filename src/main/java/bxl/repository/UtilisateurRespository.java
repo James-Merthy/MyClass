@@ -12,5 +12,5 @@ public interface UtilisateurRespository extends CrudRepository <Utilisateur , Lo
     Optional<Utilisateur> findByUsername(String username);
 
 
-    List<Utilisateur> findUsersByRole(String roles);
+    List<Utilisateur> findUsersByRolesContaining(String role);
 }

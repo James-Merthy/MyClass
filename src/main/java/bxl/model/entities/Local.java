@@ -26,7 +26,6 @@ public class Local {
     private Prof professeur ;
 
 
-
     @OneToMany(mappedBy = "classe")
     private Set <Eleve> nombreEleve = new HashSet<>();
 

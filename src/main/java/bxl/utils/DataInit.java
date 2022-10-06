@@ -30,14 +30,14 @@ public class DataInit implements InitializingBean {
 
     private final List<Utilisateur> utilisateurs = Arrays.asList(
             new Utilisateur("admin", new BCryptPasswordEncoder().encode("pass"), true, List.of("ADMIN")),
-            new Utilisateur("prof1", new BCryptPasswordEncoder().encode("pass"), true, List.of("USER")),
-            new Utilisateur("Eleve", new BCryptPasswordEncoder().encode("pass"), true, List.of("USER")),
-            new Utilisateur("Eleve", new BCryptPasswordEncoder().encode("pass"), true, List.of("USER"))
+            new Utilisateur("prof1", new BCryptPasswordEncoder().encode("pass"), true, List.of("PROF")),
+            new Utilisateur("prof2", new BCryptPasswordEncoder().encode("pass"), true, List.of("PROF")),
+            new Utilisateur("eleve1", new BCryptPasswordEncoder().encode("pass"), true, List.of("STUDENT"))
     );
 
     private final List<Prof> profs = Arrays.asList(
             new Prof( "James", "Merthy", utilisateurs.get(1)),
-            new Prof("Jamson", "Poliakof")
+            new Prof("Jamson", "Poliakof" , utilisateurs.get(2))
             );
 
     private final List<Local> local = Arrays.asList(
@@ -57,7 +57,7 @@ public class DataInit implements InitializingBean {
 
     private final List<Eleve> eleves = Arrays.asList(
 
-            new Eleve ("Aline" , "Aloi" , utilisateurs.get(2) , local.get(0) ),
+            new Eleve ("Aline" , "Aloi" , utilisateurs.get(3) , local.get(0) ),
             new Eleve ("Maxime" , "Dument" , local.get(0)),
             new Eleve ("Julie" , "Sautin", local.get(0)),
             new Eleve ("Roxane" , "Lupin", local.get(0)),

@@ -54,7 +54,7 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
     }
 
     public List<UtilisateurDTO> readAll(String role) {
-        return repository.findUsersByRole(role).stream()
+        return repository.findUsersByRolesContaining(role).stream()
                 .map(userMapper::toDto)
                 .collect(Collectors.toList());
     }

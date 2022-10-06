@@ -25,18 +25,12 @@ public class LocalMapper {
                     .map( LocalDTO.EleveDTO::fromEntity )
                     .forEach(eleve::add);
 
-        Set<LocalDTO.LeconDTO> lecon = new HashSet<>();
-        if( entity.getListLecon() != null )
-            entity.getListLecon().stream()
-                    .map( LocalDTO.LeconDTO::fromEntity )
-                    .forEach(lecon::add);
 
         return LocalDTO.builder()
                 .id(entity.getId())
                 .nom(entity.getNom())
                 .nombreEleve(eleve)
                 .professeur(entity.getProfesseur())
-                .listLecon(lecon)
                 .build();
     }
 

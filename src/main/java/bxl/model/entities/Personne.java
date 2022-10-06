@@ -30,5 +30,8 @@ public abstract class Personne {
 
 
     public Personne(String prenom, String nom, Utilisateur utilisateur) {
+        this.prenom = prenom;
+        this.nom = nom;
+        this.utilisateur = utilisateur ;
     }
 }

@@ -65,7 +65,6 @@ public class LocalDTO {
                     .id(entity.getId())
                     .nom(entity.getNom())
                     .prof(entity.getProf())
-                    .classe(entity.getClasse())
                     .build();
 
         }
