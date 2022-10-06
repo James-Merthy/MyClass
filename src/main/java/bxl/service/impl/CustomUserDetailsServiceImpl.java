@@ -78,24 +78,6 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
     }
 
 
-    public UtilisateurDTO readProfile(String username) {
-        return userMapper.toDto(repository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Connection not possible.")));
-    }
-
-    public UtilisateurDTO updateProfile (Long id , UtilisateurUpdateForm form){
-
-        Utilisateur utilisateur = repository.findById(id).orElseThrow(() -> new ElementNotFoundException(Utilisateur.class, id));
-        boolean isAdmin = utilisateur.getAuthorities().stream().anyMatch(e -> e.getAuthority().equals("ROLE_ADMIN"));
-
-        if (isAdmin)
-            throw new CannotChangeOtherAdminException(Utilisateur.class, utilisateur.getUsername());
-        if (form.getPassword() != null)
-            utilisateur.setPassword(encoder.encode(form.getPassword()));
-        return userMapper.toDto(utilisateur);
-
-    }
-
     public void delete(Long id) {
         Utilisateur user = repository.findById(id)
                 .orElseThrow(() -> new ElementNotFoundException(Utilisateur.class, id));
@@ -104,10 +86,6 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
             throw new CannotChangeOtherAdminException(Utilisateur.class, user.getUsername());
         repository.delete(user);
     }
-
-
-
-
 
 
 }
