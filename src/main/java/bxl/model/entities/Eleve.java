@@ -17,19 +17,14 @@ public class Eleve extends Personne{
     @JoinColumn(name = "classe_id")
     private Local classe ;
 
-    public Eleve(Long id, String prenom, String nom, Local classe) {
-        super(id, prenom, nom);
+
+    public Eleve( String prenom, String nom, Utilisateur utilisateur, Local classe) {
+        super( prenom, nom, utilisateur);
         this.classe = classe;
     }
 
-
-
-    public Eleve(String prenom, String nom, Local classe) {
-        super(prenom, nom);
-        this.classe = classe;
-    }
-
-    public Eleve(String prenom, String nom) {
+    public Eleve(String prenom, String nom , Local local) {
         super(prenom, nom);
     }
+
 }

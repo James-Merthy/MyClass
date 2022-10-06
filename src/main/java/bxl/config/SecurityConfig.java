@@ -30,6 +30,7 @@ public class SecurityConfig/* extends WebSecurityConfigurerAdapter  (deprecié d
         http.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests()
+                .antMatchers("/prof/all").hasRole("PROF")
                 .anyRequest().permitAll();
         return http.build();
 

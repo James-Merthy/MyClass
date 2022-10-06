@@ -3,6 +3,7 @@ package bxl.mapper;
 import bxl.model.dto.LocalDTO;
 import bxl.model.entities.Local;
 import bxl.model.entities.Prof;
+import bxl.model.forms.LocalInsertForm;
 import bxl.model.forms.LocalUpdateForm;
 import bxl.model.forms.ProfUpdateForm;
 import org.springframework.stereotype.Component;
@@ -39,7 +40,7 @@ public class LocalMapper {
                 .build();
     }
 
-    public Local toEntity(LocalUpdateForm form){
+    public Local toEntity(LocalInsertForm form){
 
         if( form == null )
             throw new IllegalArgumentException();
@@ -48,8 +49,8 @@ public class LocalMapper {
 
 
         entity.setNom(form.getNom());
-        entity.getListLecon();
-        entity.getListLecon().add(form.getLecon());
+
+
 
         return entity;
 

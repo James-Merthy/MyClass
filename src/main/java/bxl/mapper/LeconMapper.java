@@ -1,5 +1,6 @@
 package bxl.mapper;
 
+import bxl.model.dto.LeconDTO;
 import bxl.model.dto.ProfDTO;
 import bxl.model.entities.Eleve;
 import bxl.model.entities.Lecon;
@@ -15,16 +16,15 @@ public class LeconMapper {
         this.profMapper = profMapper;
     }
 
-    public ProfDTO.LeconDTO toDto (Lecon entity){
+    public LeconDTO toDto (Lecon entity){
 
         if( entity == null )
             return null;
 
-        return ProfDTO.LeconDTO.builder()
+        return LeconDTO.builder()
                 .id(entity.getId())
                 .nom(entity.getNom())
                 .prof(entity.getProf())
-                .classe(entity.getClasse())
                 .build();
     }
 
@@ -36,7 +36,7 @@ public class LeconMapper {
         Lecon entity = new Lecon();
 
         entity.setNom(form.getNom());
-        entity.getClasse();
+
 
         return entity;
 

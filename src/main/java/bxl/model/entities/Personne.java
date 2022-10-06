@@ -19,10 +19,16 @@ public abstract class Personne {
     @Column(nullable = false)
     private String nom;
 
+    @ManyToOne
+    @JoinColumn(name = "utilisateur_id")
+    private  Utilisateur utilisateur;
+
     public Personne(String prenom, String nom) {
         this.prenom = prenom;
         this.nom = nom;
     }
 
 
+    public Personne(String prenom, String nom, Utilisateur utilisateur) {
+    }
 }

@@ -25,17 +25,15 @@ public class Lecon {
     @JoinColumn(name = "prof_id" , nullable = false)
     private Prof prof;
 
-    @ManyToOne
-    @JoinColumn(name = "classe_id" , nullable = false)
-    private Local classe;
+
 
     public Lecon(String nom) {
         this.nom = nom;
     }
 
-    public Lecon(String nom, Prof prof, Local classe) {
+    public Lecon(String nom, Prof prof) {
         this.nom = nom;
         this.prof = prof;
-        this.classe = classe;
+
     }
 }

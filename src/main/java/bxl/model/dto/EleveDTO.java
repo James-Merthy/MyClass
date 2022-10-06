@@ -14,5 +14,7 @@ public class EleveDTO {
     private String nom;
     private String prenom;
     private Local classe ;
+    private Long userId ;
+    private String username ;
 
 }

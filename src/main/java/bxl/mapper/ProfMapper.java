@@ -1,10 +1,10 @@
 package bxl.mapper;
 
 import bxl.model.dto.ProfDTO;
-import bxl.model.entities.Eleve;
 import bxl.model.entities.Prof;
 import bxl.model.forms.ProfInsertForm;
-import bxl.model.forms.ProfUpdateForm;
+import bxl.repository.UtilisateurRespository;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
@@ -13,9 +13,12 @@ import java.util.Set;
 @Component
 public class ProfMapper {
 
+    private final UtilisateurRespository utilisateurRespository ;
     private final LocalMapper localMapper;
 
-    public ProfMapper( LocalMapper localMapper) {
+
+    public ProfMapper(UtilisateurRespository utilisateurRespository, LocalMapper localMapper) {
+        this.utilisateurRespository = utilisateurRespository;
         this.localMapper = localMapper;
     }
 
@@ -38,27 +41,14 @@ public class ProfMapper {
                 .nom( entity.getNom() )
                 .classe(entity.getClasse())
                 .lecons(lecon)
+                .userId(entity.getUtilisateur().getId())
+                .username(entity.getUtilisateur().getUsername())
                 .build();
 
 
 
     }
 
-//    public Prof toEntityUpdate(ProfUpdateForm form){
-//
-//        if( form == null )
-//            throw new IllegalArgumentException();
-//
-//        Prof entity = new Prof ();
-//
-//        entity.setPrenom(form.getPrenom());
-//        entity.setNom(form.getNom());
-//        entity.getClasse();
-//        entity.getListLecon().add(form.getLecon());
-//
-//        return entity;
-//
-//    }
 
     public Prof toEntity(ProfInsertForm form){
 
@@ -69,8 +59,9 @@ public class ProfMapper {
 
         entity.setPrenom(form.getPrenom());
         entity.setNom(form.getNom());
-        entity.getClasse();
+        entity.setClasse(form.getClasse());
         entity.getListLecon();
+        entity.setUtilisateur(utilisateurRespository.findByUsername(form.getUsername()).orElseThrow(() -> new UsernameNotFoundException("Username not found.")));
 
 
         return entity;

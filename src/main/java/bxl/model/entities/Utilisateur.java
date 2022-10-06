@@ -18,7 +18,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Utilisateur implements UserDetails {
+public class  Utilisateur implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,13 +29,16 @@ public class Utilisateur implements UserDetails {
     private boolean enabled = true;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> roles = new ArrayList<>();
+    private List<String> roles = List.of("USER");
 
     public Utilisateur(String username, String password, boolean enabled, List<String> roles) {
         this.username = username;
         this.password = password;
         this.enabled = enabled;
         this.roles = roles;
+    }
+
+    public Utilisateur(String username, String encode) {
     }
 
     @Override
@@ -48,17 +51,17 @@ public class Utilisateur implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return  isEnabled() ;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return  isEnabled();
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return enabled;
     }
 
 }

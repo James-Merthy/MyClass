@@ -22,6 +22,7 @@ public class ProfUpdateForm {
     private Local classe ;
     @NotNull
     private Lecon lecon;
+    private String username ;
 
 }
 

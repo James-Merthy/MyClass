@@ -17,7 +17,7 @@ public class LocalDTO {
     private String nom;
     private Prof professeur ;
     private Set<LocalDTO.EleveDTO> nombreEleve ;
-    private Set<LocalDTO.LeconDTO> listLecon ;
+
 
     @Data
     @Builder

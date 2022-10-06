@@ -17,4 +17,5 @@ public class ProfInsertForm  {
     private String prenom;
     @NotNull
     private Local classe ;
+    private String username ;
 }

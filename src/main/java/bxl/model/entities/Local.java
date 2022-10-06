@@ -30,8 +30,6 @@ public class Local {
     @OneToMany(mappedBy = "classe")
     private Set <Eleve> nombreEleve = new HashSet<>();
 
-    @OneToMany(mappedBy = "classe")
-    private Set<Lecon> listLecon = new HashSet<>();
 
     public Local(String nom) {
         this.nom = nom;

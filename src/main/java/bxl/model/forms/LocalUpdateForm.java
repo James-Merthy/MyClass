@@ -21,7 +21,5 @@ public class LocalUpdateForm {
     @NotNull
     private Prof professeur;
 
-    @NotNull
-    private Lecon lecon;
 
 }

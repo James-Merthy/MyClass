@@ -17,5 +17,6 @@ public class EleveForm {
     private String prenom;
     @NotNull
     private Local classe ;
+    private String username ;
 
 }

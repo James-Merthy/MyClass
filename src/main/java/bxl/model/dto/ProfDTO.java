@@ -18,6 +18,8 @@ public class ProfDTO {
     private String nom;
     private Local classe ;
     private Set<ProfDTO.LeconDTO> lecons ;
+    private Long userId ;
+    private String username ;
 
     @Data
     @Builder
@@ -38,7 +40,6 @@ public class ProfDTO {
                     .id(entity.getId())
                     .nom(entity.getNom())
                     .prof(entity.getProf())
-                    .classe(entity.getClasse())
                     .build();
 
         }

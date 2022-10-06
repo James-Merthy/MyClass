@@ -8,6 +8,7 @@ import bxl.model.forms.LeconForm;
 import bxl.service.EleveService;
 import bxl.service.LeconService;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -36,6 +37,7 @@ public class LeconController {
         return service.getAll();
     }
 
+    @PreAuthorize("hasRole('PROF')") // ROLE_PROF
     @PostMapping
     public LeconDTO insert(@Valid @RequestBody LeconForm form) {
         return service.create(form);

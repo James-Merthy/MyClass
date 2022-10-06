@@ -2,14 +2,19 @@ package bxl.mapper;
 
 import bxl.model.dto.EleveDTO;
 import bxl.model.entities.Eleve;
+import bxl.model.forms.EleveForm;
+import bxl.repository.UtilisateurRespository;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 @Component
 public class EleveMapper {
 
+    private final UtilisateurRespository utilisateurRespository ;
     private final LocalMapper localMapper;
 
-    public EleveMapper(LocalMapper localMapper) {
+    public EleveMapper(UtilisateurRespository utilisateurRespository, LocalMapper localMapper) {
+        this.utilisateurRespository = utilisateurRespository;
         this.localMapper = localMapper;
     }
 
@@ -23,10 +28,12 @@ public class EleveMapper {
                 .nom(entity.getNom())
                 .prenom(entity.getPrenom())
                 .classe(entity.getClasse())
+                .userId(entity.getUtilisateur().getId())
+                .username(entity.getUtilisateur().getUsername())
                 .build();
     }
 
-    public Eleve toEntity(Eleve form){
+    public Eleve toEntity(EleveForm form){
 
         if( form == null )
             throw new IllegalArgumentException();
@@ -35,7 +42,8 @@ public class EleveMapper {
 
         entity.setPrenom(form.getPrenom());
         entity.setNom(form.getNom());
-        entity.getClasse();
+        entity.setClasse(form.getClasse());
+        entity.setUtilisateur(utilisateurRespository.findByUsername(form.getUsername()).orElseThrow(() -> new UsernameNotFoundException("Username not found.")));
 
         return entity;
 

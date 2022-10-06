@@ -25,4 +25,10 @@ public class Prof extends Personne {
     public Prof(String prenom, String nom) {
         super(prenom, nom);
     }
+
+
+    public Prof(String prenom, String nom, Utilisateur utilisateur) {
+        super( prenom, nom, utilisateur);
+
+    }
 }

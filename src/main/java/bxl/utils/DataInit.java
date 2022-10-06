@@ -31,11 +31,12 @@ public class DataInit implements InitializingBean {
     private final List<Utilisateur> utilisateurs = Arrays.asList(
             new Utilisateur("admin", new BCryptPasswordEncoder().encode("pass"), true, List.of("ADMIN")),
             new Utilisateur("prof1", new BCryptPasswordEncoder().encode("pass"), true, List.of("USER")),
+            new Utilisateur("Eleve", new BCryptPasswordEncoder().encode("pass"), true, List.of("USER")),
             new Utilisateur("Eleve", new BCryptPasswordEncoder().encode("pass"), true, List.of("USER"))
     );
 
     private final List<Prof> profs = Arrays.asList(
-            new Prof("James", "Merthy" ),
+            new Prof( "James", "Merthy", utilisateurs.get(1)),
             new Prof("Jamson", "Poliakof")
             );
 
@@ -46,17 +47,17 @@ public class DataInit implements InitializingBean {
     );
 
     private final List<Lecon> lecon = Arrays.asList(
-            new Lecon ("Leçon math 1" , profs.get(0) , local.get(0) ),
-            new Lecon ("Leçon Français 1" , profs.get(0) , local.get(0) ),
-            new Lecon ("Leçon Histoire 1", profs.get(1) , local.get(1) ),
-            new Lecon ("Leçon Géo 1" , profs.get(0) , local.get(0) ),
-            new Lecon ("Leçon math 1" , profs.get(1) , local.get(1) )
+            new Lecon ("Leçon math 1" , profs.get(0)  ),
+            new Lecon ("Leçon Français 1" , profs.get(0) ),
+            new Lecon ("Leçon Histoire 1", profs.get(1)  ),
+            new Lecon ("Leçon Géo 1" , profs.get(0) ),
+            new Lecon ("Leçon math 1" , profs.get(1) )
     );
 
 
     private final List<Eleve> eleves = Arrays.asList(
 
-            new Eleve ("Aline" , "Aloi" , local.get(0) ),
+            new Eleve ("Aline" , "Aloi" , utilisateurs.get(2) , local.get(0) ),
             new Eleve ("Maxime" , "Dument" , local.get(0)),
             new Eleve ("Julie" , "Sautin", local.get(0)),
             new Eleve ("Roxane" , "Lupin", local.get(0)),
