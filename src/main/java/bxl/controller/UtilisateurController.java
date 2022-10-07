@@ -1,9 +1,7 @@
 package bxl.controller;
 
 import bxl.model.dto.UtilisateurDTO;
-import bxl.model.forms.LoginForm;
-import bxl.model.forms.UtilisateurCreeForm;
-import bxl.model.forms.UtilisateurUpdateForm;
+import bxl.model.forms.*;
 import bxl.service.impl.CustomUserDetailsServiceImpl;
 import bxl.utils.JwtProvider;
 import org.springframework.security.access.annotation.Secured;
@@ -31,8 +29,21 @@ public class UtilisateurController {
     }
 
     @PostMapping("/register")
+    @Secured({"ROLE_ADMIN"})
     public void createUser(@Valid @RequestBody UtilisateurCreeForm form){
         service.create(form);
+    }
+
+    @PostMapping("/register/prof")
+    @Secured({"ROLE_ADMIN"})
+    public void createProf(@Valid @RequestBody UtilisateurCreeForm form){
+        service.createPof(form);
+    }
+
+    @PostMapping("/register/eleve")
+    @Secured({"ROLE_ADMIN"})
+    public void createEleve(@Valid @RequestBody UtilisateurCreeForm form){
+        service.createEleve(form);
     }
 
     @PostMapping ("/login")

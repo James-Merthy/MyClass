@@ -9,17 +9,13 @@ import bxl.model.entities.Utilisateur;
 import bxl.model.forms.UtilisateurCreeForm;
 import bxl.model.forms.UtilisateurUpdateForm;
 import bxl.repository.UtilisateurRespository;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
-import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,13 +24,14 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
 
     private final UtilisateurRespository repository;
     private final PasswordEncoder encoder;
-
     private final UtilisateurMapper userMapper;
+    private final List<String> roles = new ArrayList<>() ;
 
     public CustomUserDetailsServiceImpl(UtilisateurRespository repository, PasswordEncoder encoder, UtilisateurMapper userMapper) {
         this.repository = repository;
         this.encoder = encoder;
         this.userMapper = userMapper;
+
     }
 
     @Override
@@ -46,6 +43,37 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
     public void create(UtilisateurCreeForm form) {
         try {
             Utilisateur user = new Utilisateur(form.getUsername(), encoder.encode(form.getPassword()));
+
+            user.getRoles().add("ADMIN");
+
+            repository.save(user);
+
+
+        }
+        catch(Exception exception) {
+            throw new AlreadyExistsException(form.getUsername(), "username");
+        }
+    }
+
+    public void createPof(UtilisateurCreeForm form) {
+        try {
+            Utilisateur user = new Utilisateur(form.getUsername(), encoder.encode(form.getPassword()));
+
+            user.getRoles().add("PROF");
+
+            repository.save(user);
+        }
+        catch(Exception exception) {
+            throw new AlreadyExistsException(form.getUsername(), "username");
+        }
+    }
+
+    public void createEleve(UtilisateurCreeForm form) {
+        try {
+            Utilisateur user = new Utilisateur(form.getUsername(), encoder.encode(form.getPassword()));
+
+            user.getRoles().add("STUDENT");
+
             repository.save(user);
         }
         catch(Exception exception) {

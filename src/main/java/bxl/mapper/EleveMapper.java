@@ -15,6 +15,7 @@ public class EleveMapper {
 
     public EleveMapper(UtilisateurRespository utilisateurRespository, LocalMapper localMapper) {
         this.utilisateurRespository = utilisateurRespository;
+
         this.localMapper = localMapper;
     }
 
@@ -27,8 +28,8 @@ public class EleveMapper {
                 .id(entity.getId())
                 .nom(entity.getNom())
                 .prenom(entity.getPrenom())
-                .classe(entity.getClasse())
                 .userId(entity.getUtilisateur().getId())
+                .localID(entity.getId())
                 .username(entity.getUtilisateur().getUsername())
                 .build();
     }

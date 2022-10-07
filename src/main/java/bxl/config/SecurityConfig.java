@@ -31,7 +31,12 @@ public class SecurityConfig/* extends WebSecurityConfigurerAdapter  (deprecié d
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests()
                 .antMatchers(HttpMethod.GET,"/*", "/*/all").hasAnyRole("PROF", "ADMIN")
-                .antMatchers("/user/**").permitAll()
+                .antMatchers("/eleve/all").permitAll()
+                .antMatchers("/local/all").permitAll()
+                .antMatchers("/lecon/all").permitAll()
+                .antMatchers("/prof/all").hasAnyRole("PROF", "ADMIN")
+                .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
+                .antMatchers("/api/user/**").permitAll()
                 .anyRequest().authenticated();
         return http.build();
 

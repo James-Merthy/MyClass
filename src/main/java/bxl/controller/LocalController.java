@@ -8,6 +8,7 @@ import bxl.model.forms.ProfInsertForm;
 import bxl.model.forms.ProfUpdateForm;
 import bxl.service.LocalService;
 import bxl.service.ProfService;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
@@ -39,17 +40,20 @@ public class LocalController {
     }
 
     @PostMapping
+    @Secured({"ROLE_ADMIN"})
     public LocalDTO insert(@Valid @RequestBody LocalInsertForm form) {
         return service.create(form);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
+    @Secured({"ROLE_ADMIN"})
     public LocalDTO delete(@PathVariable long id) {
         return service.delete(id);
     }
 
     @PutMapping("/{id}")
+    @Secured({"ROLE_ADMIN"})
     public LocalDTO update(@PathVariable long id, @Valid @RequestBody LocalUpdateForm form) {
         return service.update(id, form);
     }

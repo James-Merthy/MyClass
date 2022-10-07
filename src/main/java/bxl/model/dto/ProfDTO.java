@@ -16,8 +16,7 @@ public class ProfDTO {
     private Long id;
     private String prenom;
     private String nom;
-    private Local classe ;
-    private Set<ProfDTO.LeconDTO> lecons ;
+    private Set<String> lecons ;
     private Long userId ;
     private String username ;
 
@@ -25,11 +24,7 @@ public class ProfDTO {
     @Builder
 
     public static class LeconDTO {
-
-        private Long id;
         private String nom;
-        private Prof prof;
-        private Local classe;
 
         public static LeconDTO fromEntity(Lecon entity) {
 
@@ -37,9 +32,7 @@ public class ProfDTO {
                 return null;
 
             return  LeconDTO.builder()
-                    .id(entity.getId())
                     .nom(entity.getNom())
-                    .prof(entity.getProf())
                     .build();
 
         }

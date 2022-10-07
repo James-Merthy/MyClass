@@ -19,18 +19,10 @@ public class LocalMapper {
         if(entity == null)
             return null;
 
-        Set<LocalDTO.EleveDTO> eleve = new HashSet<>();
-        if( entity.getNombreEleve() != null )
-            entity.getNombreEleve().stream()
-                    .map( LocalDTO.EleveDTO::fromEntity )
-                    .forEach(eleve::add);
-
-
         return LocalDTO.builder()
                 .id(entity.getId())
                 .nom(entity.getNom())
-                .nombreEleve(eleve)
-                .professeur(entity.getProfesseur())
+                .profId(entity.getId())
                 .build();
     }
 

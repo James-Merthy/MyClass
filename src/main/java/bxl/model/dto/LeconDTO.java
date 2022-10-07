@@ -11,7 +11,7 @@ public class LeconDTO {
 
     private Long id;
     private String nom;
-    private Prof prof ;
+
 
 
 }

@@ -5,6 +5,7 @@ import bxl.model.forms.ProfInsertForm;
 import bxl.model.forms.ProfUpdateForm;
 import bxl.service.ProfService;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,17 +34,20 @@ public class ProfController {
     }
 
     @PostMapping
+    @Secured({"ROLE_ADMIN"})
     public ProfDTO insert(@Valid @RequestBody ProfInsertForm form) {
         return service.create(form);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
+    @Secured({"ROLE_ADMIN"})
     public ProfDTO delete(@PathVariable long id) {
         return service.delete(id);
     }
 
     @PutMapping("/{id}")
+    @Secured({"ROLE_ADMIN"})
     public ProfDTO update(@PathVariable long id, @Valid @RequestBody ProfUpdateForm form) {
         return service.update(id, form);
     }
