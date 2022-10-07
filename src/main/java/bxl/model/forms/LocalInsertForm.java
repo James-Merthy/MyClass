@@ -14,7 +14,5 @@ public class LocalInsertForm {
     @Size(max = 255)
     private String nom;
 
-    @NotNull
-    private Prof professeur;
 
 }

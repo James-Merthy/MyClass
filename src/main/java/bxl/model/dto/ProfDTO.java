@@ -16,26 +16,8 @@ public class ProfDTO {
     private Long id;
     private String prenom;
     private String nom;
-    private Set<String> lecons ;
     private Long userId ;
     private String username ;
 
-    @Data
-    @Builder
 
-    public static class LeconDTO {
-        private String nom;
-
-        public static LeconDTO fromEntity(Lecon entity) {
-
-            if (entity == null)
-                return null;
-
-            return  LeconDTO.builder()
-                    .nom(entity.getNom())
-                    .build();
-
-        }
-
-    }
 }

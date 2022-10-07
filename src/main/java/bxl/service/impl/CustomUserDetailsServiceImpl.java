@@ -25,7 +25,7 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
     private final UtilisateurRespository repository;
     private final PasswordEncoder encoder;
     private final UtilisateurMapper userMapper;
-    private final List<String> roles = new ArrayList<>() ;
+//    private final List<String> roles = new ArrayList<>() ;
 
     public CustomUserDetailsServiceImpl(UtilisateurRespository repository, PasswordEncoder encoder, UtilisateurMapper userMapper) {
         this.repository = repository;
@@ -42,7 +42,11 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
 
     public void create(UtilisateurCreeForm form) {
         try {
-            Utilisateur user = new Utilisateur(form.getUsername(), encoder.encode(form.getPassword()));
+
+            Utilisateur user = new Utilisateur();//new Utilisateur(form.getUsername(), encoder.encode(form.getPassword()));
+
+            user.setUsername(form.getUsername());
+            user.setPassword(encoder.encode(form.getPassword()));
 
             user.getRoles().add("ADMIN");
 
@@ -74,7 +78,10 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
 
     public void createEleve(UtilisateurCreeForm form) {
         try {
-            Utilisateur user = new Utilisateur(form.getUsername(), encoder.encode(form.getPassword()));
+            Utilisateur user = new Utilisateur();//new Utilisateur(form.getUsername(), encoder.encode(form.getPassword()));
+
+            user.setUsername(form.getUsername());
+            user.setPassword(encoder.encode(form.getPassword()));
 
             user.getRoles().add("STUDENT");
 

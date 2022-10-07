@@ -19,7 +19,7 @@ public abstract class Personne {
     @Column(nullable = false)
     private String nom;
 
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "utilisateur_id")
     private  Utilisateur utilisateur;
 

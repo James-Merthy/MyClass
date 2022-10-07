@@ -13,7 +13,6 @@ public class EleveDTO {
     private Long id;
     private String nom;
     private String prenom;
-    private Long localID;
     private Long userId ;
     private String username ;
 

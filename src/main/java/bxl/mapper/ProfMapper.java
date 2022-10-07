@@ -29,11 +29,6 @@ public class ProfMapper {
         if( entity == null )
             return null;
 
-        Set<ProfDTO.LeconDTO> lecon = new HashSet<>();
-        if( entity.getListLecon() != null )
-            entity.getListLecon().stream()
-                    .map( ProfDTO.LeconDTO::fromEntity )
-                    .forEach(lecon::add);
 
         return ProfDTO.builder()
                 .id( entity.getId() )
@@ -58,7 +53,6 @@ public class ProfMapper {
         entity.setPrenom(form.getPrenom());
         entity.setNom(form.getNom());
         entity.setClasse(form.getClasse());
-        entity.getListLecon();
         entity.setUtilisateur(utilisateurRespository.findByUsername(form.getUsername()).orElseThrow(() -> new UsernameNotFoundException("Username not found.")));
 
 

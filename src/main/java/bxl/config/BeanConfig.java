@@ -7,8 +7,8 @@ import java.util.Scanner;
 @Configuration
 public class BeanConfig {
 
-    @Bean
-    public Scanner scanner(){
-        return new Scanner(System.in);
-    }
+//    @Bean
+//    public Scanner scanner(){
+//        return new Scanner(System.in);
+//    }
 }

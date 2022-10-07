@@ -67,8 +67,8 @@ public class DataInit implements InitializingBean {
             );
 
     private final List<Local> local = Arrays.asList(
-            new Local ("ClasseA" , profs.get(0) ),
-            new Local ("ClasseB" , profs.get(1))
+            new Local ("ClasseA"  ),
+            new Local ("ClasseB" )
 
     );
 

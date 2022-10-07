@@ -4,6 +4,7 @@ import bxl.exceptions.ElementNotFoundException;
 import bxl.exceptions.UserNotTheSameException;
 import bxl.mapper.ProfMapper;
 import bxl.model.dto.ProfDTO;
+import bxl.model.entities.Eleve;
 import bxl.model.entities.Prof;
 import bxl.model.forms.ProfInsertForm;
 import bxl.model.forms.ProfUpdateForm;
@@ -34,9 +35,8 @@ public class ProfServiceImpl implements ProfService {
     public ProfDTO create(ProfInsertForm toInsert) {
 
         Prof prof = profMapper.toEntity((toInsert));
-        prof = profRespository.save(prof);
 
-        return profMapper.toDto(prof);
+        return profMapper.toDto(profRespository.save(prof));
     }
 
     @Override
@@ -56,8 +56,6 @@ public class ProfServiceImpl implements ProfService {
             prof.setNom(toUpdate.getNom());
         if (toUpdate.getPrenom() != null)
             prof.setPrenom(toUpdate.getPrenom());
-        if (toUpdate.getClasse() != null)
-            prof.setClasse(toUpdate.getClasse());
         return profMapper.toDto((prof));
     }
 
@@ -78,9 +76,12 @@ public class ProfServiceImpl implements ProfService {
 
     @Override
     public ProfDTO delete(Long id) {
-        return profRespository.findById(id)
-                .map(profMapper::toDto)
+        Prof toDelete = profRespository.findById(id)
+//                .map(eleveMapper::toDto)
                 .orElseThrow(() -> new ElementNotFoundException(Prof.class, id));
+
+        profRespository.delete(toDelete);
+        return profMapper.toDto( toDelete );
     }
 
 

@@ -18,10 +18,6 @@ public class ProfUpdateForm {
     @NotBlank
     @Size(max = 255)
     private String prenom;
-    @NotNull
-    private Local classe ;
-    @NotNull
-    private Lecon lecon;
     private String username ;
 
 }

@@ -29,7 +29,6 @@ public class EleveMapper {
                 .nom(entity.getNom())
                 .prenom(entity.getPrenom())
                 .userId(entity.getUtilisateur().getId())
-                .localID(entity.getId())
                 .username(entity.getUtilisateur().getUsername())
                 .build();
     }
@@ -43,7 +42,6 @@ public class EleveMapper {
 
         entity.setPrenom(form.getPrenom());
         entity.setNom(form.getNom());
-        entity.setClasse(form.getClasse());
         entity.setUtilisateur(utilisateurRespository.findByUsername(form.getUsername()).orElseThrow(() -> new UsernameNotFoundException("Username not found.")));
 
         return entity;

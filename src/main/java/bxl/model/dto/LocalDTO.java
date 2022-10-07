@@ -15,7 +15,7 @@ public class LocalDTO {
 
     private Long id;
     private String nom;
-    private Long profId ;
+
 
 
 //

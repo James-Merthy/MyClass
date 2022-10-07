@@ -22,8 +22,6 @@ public class Local {
 
     private String nom ;
 
-    @OneToOne(mappedBy = "classe")
-    private Prof professeur ;
 
 
     @OneToMany(mappedBy = "classe")
@@ -34,9 +32,5 @@ public class Local {
         this.nom = nom;
     }
 
-    public Local(String nom, Prof professeur) {
-        this.nom = nom;
-        this.professeur = professeur;
 
-    }
 }

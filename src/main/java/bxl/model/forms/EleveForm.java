@@ -16,7 +16,8 @@ public class EleveForm {
     @Size(max = 255)
     private String prenom;
     @NotNull
-    private Local classe ;
+    private Long localId    ;
+    private Long userId ;
     private String username ;
 
 }

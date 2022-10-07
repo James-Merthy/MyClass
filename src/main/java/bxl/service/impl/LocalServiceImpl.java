@@ -5,6 +5,7 @@ import bxl.mapper.LocalMapper;
 import bxl.model.dto.LocalDTO;
 import bxl.model.entities.Eleve;
 import bxl.model.entities.Local;
+import bxl.model.entities.Prof;
 import bxl.model.forms.LocalInsertForm;
 import bxl.model.forms.LocalUpdateForm;
 import bxl.repository.LocalRespository;
@@ -63,8 +64,11 @@ public class LocalServiceImpl implements LocalService {
 
     @Override
     public LocalDTO delete(Long id) {
-        return  localRespository.findById(id)
-                .map(localMapper::toDto)
+        Local toDelete = localRespository.findById(id)
+//                .map(eleveMapper::toDto)
                 .orElseThrow(() -> new ElementNotFoundException(Local.class, id));
+
+        localRespository.delete(toDelete);
+        return localMapper.toDto( toDelete );
     }
 }

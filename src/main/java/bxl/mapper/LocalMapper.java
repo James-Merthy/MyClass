@@ -22,7 +22,6 @@ public class LocalMapper {
         return LocalDTO.builder()
                 .id(entity.getId())
                 .nom(entity.getNom())
-                .profId(entity.getId())
                 .build();
     }
 

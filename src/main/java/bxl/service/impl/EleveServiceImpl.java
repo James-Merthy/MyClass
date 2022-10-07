@@ -53,8 +53,6 @@ public class EleveServiceImpl implements EleveService {
             eleve.setNom(toUpdate.getNom());
         if (toUpdate.getPrenom() != null)
             eleve.setPrenom(toUpdate.getPrenom());
-        if (toUpdate.getClasse() != null)
-            eleve.setClasse(toUpdate.getClasse());
         return eleveMapper.toDto((eleve));
     }
 
@@ -75,8 +73,12 @@ public class EleveServiceImpl implements EleveService {
     @Override
     public EleveDTO delete(Long id) {
 
-       return eleveRespository.findById(id)
-                .map(eleveMapper::toDto)
+       Eleve toDelete = eleveRespository.findById(id)
+//                .map(eleveMapper::toDto)
                 .orElseThrow(() -> new ElementNotFoundException(Eleve.class, id));
+
+       eleveRespository.delete(toDelete);
+       return eleveMapper.toDto( toDelete );
+
     }
 }
