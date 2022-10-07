@@ -13,4 +13,8 @@ public interface UtilisateurRespository extends CrudRepository <Utilisateur , Lo
 
 
     List<Utilisateur> findUsersByRolesContaining(String role);
+
+
+    @Override
+    List<Utilisateur> findAll();
 }

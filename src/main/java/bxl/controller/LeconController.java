@@ -44,6 +44,7 @@ public class LeconController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('PROF')")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public LeconDTO delete(@PathVariable long id) {
         return service.delete(id);

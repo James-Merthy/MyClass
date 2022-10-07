@@ -37,6 +37,7 @@ public class SecurityConfig/* extends WebSecurityConfigurerAdapter  (deprecié d
                 .antMatchers("/prof/all").hasAnyRole("PROF", "ADMIN")
                 .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
                 .antMatchers("/api/user/**").permitAll()
+
                 .anyRequest().authenticated();
         return http.build();
 

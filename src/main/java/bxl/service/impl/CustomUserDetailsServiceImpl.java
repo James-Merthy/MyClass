@@ -57,15 +57,19 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
 
     public void createPof(UtilisateurCreeForm form) {
         try {
-            Utilisateur user = new Utilisateur(form.getUsername(), encoder.encode(form.getPassword()));
+            Utilisateur user = new Utilisateur();//new Utilisateur(form.getUsername(), encoder.encode(form.getPassword()));
 
+            user.setUsername(form.getUsername());
+            user.setPassword(encoder.encode(form.getPassword()));
             user.getRoles().add("PROF");
 
             repository.save(user);
         }
         catch(Exception exception) {
             throw new AlreadyExistsException(form.getUsername(), "username");
+//            System.err.println(exception);
         }
+
     }
 
     public void createEleve(UtilisateurCreeForm form) {
@@ -82,7 +86,7 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
     }
 
     public List<UtilisateurDTO> readAll(String role) {
-        return repository.findUsersByRolesContaining(role).stream()
+        return repository.findAll().stream()
                 .map(userMapper::toDto)
                 .collect(Collectors.toList());
     }
