@@ -33,7 +33,6 @@ public class EleveServiceImpl implements EleveService {
     public EleveDTO create(EleveForm toInsert) {
         Eleve eleve = eleveMapper.toEntity((toInsert));
         eleve = eleveRespository.save(eleve);
-
         return eleveMapper.toDto(eleve);
     }
 

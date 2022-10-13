@@ -1,6 +1,7 @@
 package bxl.controller;
 
 import bxl.model.dto.TokenDTO;
+import bxl.model.dto.UserNameDTO;
 import bxl.model.dto.UtilisateurDTO;
 import bxl.model.forms.*;
 import bxl.service.impl.CustomUserDetailsServiceImpl;
@@ -51,6 +52,7 @@ public class UtilisateurController {
     public TokenDTO login(@Valid @RequestBody LoginForm form){
         Authentication auth = authManager.authenticate(new UsernamePasswordAuthenticationToken(form.getUsername(), form.getPassword()));
         return new TokenDTO(jwtProvider.createToken(auth));    }
+
 
     @GetMapping("/all")
     @Secured({"ROLE_ADMIN"})

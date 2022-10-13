@@ -14,6 +14,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -27,15 +34,16 @@ public class SecurityConfig/* extends WebSecurityConfigurerAdapter  (deprecié d
     public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthFilter authFilter) throws Exception {
 
         http.csrf().disable();
+
         http.httpBasic().disable();
         http.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/*", "/*/all").hasAnyRole("PROF", "ADMIN")
-                .antMatchers("/eleve/all").permitAll()
-                .antMatchers("/local/all").permitAll()
-                .antMatchers("/lecon/all").permitAll()
-                .antMatchers("/prof/all").hasAnyRole("PROF", "ADMIN")
+                .antMatchers(HttpMethod.GET,"/*", "/*/all").authenticated()
+//                .antMatchers("/eleve/all").permitAll()
+//                .antMatchers("/local/all").permitAll()
+//                .antMatchers("/lecon/all").permitAll()
+//                .antMatchers("/prof/all").hasAnyRole("PROF", "ADMIN")
                 .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
                 .antMatchers("/api/user/**").permitAll()
                 .anyRequest().permitAll();
@@ -52,4 +60,18 @@ public class SecurityConfig/* extends WebSecurityConfigurerAdapter  (deprecié d
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
+
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("*"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "DELETE", "PUT", "PATCH"));
+        configuration.setAllowedHeaders(Arrays.asList("X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization"));
+        configuration.setAllowCredentials(true);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+
+
 }

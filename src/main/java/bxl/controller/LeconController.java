@@ -9,12 +9,13 @@ import bxl.service.EleveService;
 import bxl.service.LeconService;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(/*origins= "http://localhost:4200"*/)
 @RestController
 @RequestMapping("/lecon")
 
@@ -39,8 +40,8 @@ public class LeconController {
 
     @PreAuthorize("hasRole('PROF')") // ROLE_PROF
     @PostMapping
-    public LeconDTO insert(@Valid @RequestBody LeconForm form) {
-        return service.create(form);
+    public LeconDTO insert(@Valid @RequestBody LeconForm form, Authentication auth) {
+        return service.create(form,auth);
     }
 
     @DeleteMapping("/{id}")

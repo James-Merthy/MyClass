@@ -22,7 +22,7 @@ public class Lecon {
     private String nom ;
 
     @ManyToOne
-    @JoinColumn(name = "prof_id" , nullable = false)
+    @JoinColumn(name = "prof_id")
     private Prof prof;
 
 

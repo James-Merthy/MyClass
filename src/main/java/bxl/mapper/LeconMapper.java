@@ -24,6 +24,7 @@ public class LeconMapper {
         return LeconDTO.builder()
                 .id(entity.getId())
                 .nom(entity.getNom())
+//                .profId(entity.getId())
                 .build();
     }
 
@@ -35,6 +36,7 @@ public class LeconMapper {
         Lecon entity = new Lecon();
 
         entity.setNom(form.getNom());
+//        entity.getProf().setId(form.getProfId());
 
         return entity;
 

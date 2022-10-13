@@ -24,27 +24,20 @@ public class ProfServiceImpl implements ProfService {
 
     private final ProfMapper profMapper ;
 
-
     public ProfServiceImpl(ProfRespository profRespository, ProfMapper profMapper) {
         this.profRespository = profRespository;
         this.profMapper = profMapper;
     }
 
-
     @Override
     public ProfDTO create(ProfInsertForm toInsert) {
-
         Prof prof = profMapper.toEntity((toInsert));
-
         return profMapper.toDto(profRespository.save(prof));
     }
-
     @Override
     public ProfDTO update(Long id, ProfUpdateForm toUpdate) {
-
         Prof prof  = profRespository.findById(id).
                 orElseThrow(() -> new ElementNotFoundException(Prof.class , id ));
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         boolean isAdmin = authentication.getAuthorities().stream().anyMatch(e -> e.getAuthority().equals("ROLE_ADMIN"));
         boolean isOwner = prof.getUtilisateur().getUsername().equals(authentication.getName());
