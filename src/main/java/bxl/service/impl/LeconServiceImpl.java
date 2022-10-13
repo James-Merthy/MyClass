@@ -1,7 +1,6 @@
 package bxl.service.impl;
 
 import bxl.exceptions.ElementNotFoundException;
-import bxl.exceptions.UserNotTheSameException;
 import bxl.mapper.LeconMapper;
 import bxl.model.dto.LeconDTO;
 import bxl.model.entities.Lecon;
@@ -11,7 +10,6 @@ import bxl.repository.LeconRespository;
 import bxl.repository.ProfRespository;
 import bxl.service.LeconService;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -84,9 +82,10 @@ public class LeconServiceImpl implements LeconService {
 
     @Override
     public LeconDTO delete(Long id) {
-
-        return  leconRespository.findById(id)
-                .map(leconMapper::toDto)
+        Lecon lecon = leconRespository.findById(id)
                 .orElseThrow(() -> new ElementNotFoundException(Lecon.class, id));
+        leconRespository.delete(lecon);
+
+        return null;
     }
 }

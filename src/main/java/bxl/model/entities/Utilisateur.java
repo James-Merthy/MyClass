@@ -29,7 +29,7 @@ public class  Utilisateur implements UserDetails {
     private boolean enabled = true;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> roles = new ArrayList<>();
+    private List<String> roles = List.of("PROF");
 
     public Utilisateur(String username, String password, boolean enabled, List<String> roles) {
         this.username = username;

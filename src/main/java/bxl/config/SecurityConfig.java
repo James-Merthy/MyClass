@@ -39,13 +39,13 @@ public class SecurityConfig/* extends WebSecurityConfigurerAdapter  (deprecié d
         http.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/*", "/*/all").authenticated()
-//                .antMatchers("/eleve/all").permitAll()
-//                .antMatchers("/local/all").permitAll()
-//                .antMatchers("/lecon/all").permitAll()
-//                .antMatchers("/prof/all").hasAnyRole("PROF", "ADMIN")
-                .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
-                .antMatchers("/api/user/**").permitAll()
+//                .antMatchers(HttpMethod.GET,"/*", "/*/all").authenticated()
+////                .antMatchers("/eleve/all").permitAll()
+////                .antMatchers("/local/all").permitAll()
+////                .antMatchers("/lecon/all").permitAll()
+////                .antMatchers("/prof/all").hasAnyRole("PROF", "ADMIN")
+//                .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
+//                .antMatchers("/api/user/**").permitAll()
                 .anyRequest().permitAll();
         return http.build();
 
@@ -61,17 +61,17 @@ public class SecurityConfig/* extends WebSecurityConfigurerAdapter  (deprecié d
         return config.getAuthenticationManager();
     }
 
-    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("*"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "DELETE", "PUT", "PATCH"));
-        configuration.setAllowedHeaders(Arrays.asList("X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization"));
-        configuration.setAllowCredentials(true);
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
+//    @Bean
+//    CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration configuration = new CorsConfiguration();
+//        configuration.setAllowedOrigins(Arrays.asList("*"));
+//        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "DELETE", "PUT", "PATCH"));
+//        configuration.setAllowedHeaders(Arrays.asList("X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization"));
+//        configuration.setAllowCredentials(true);
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", configuration);
+//        return source;
+//    }
 
 
 }
