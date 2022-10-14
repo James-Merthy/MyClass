@@ -28,8 +28,9 @@ public class  Utilisateur implements UserDetails {
     private String password;
     private boolean enabled = true;
 
+    //(fetch = FetchType.EAGER)
     @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> roles = List.of("PROF");
+    private List<String> roles = List.of("STUDENT");
 
     public Utilisateur(String username, String password, boolean enabled, List<String> roles) {
         this.username = username;

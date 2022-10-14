@@ -77,19 +77,30 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
     }
 
     public void createEleve(UtilisateurCreeForm form) {
+
+//        Utilisateur user = new Utilisateur();//new Utilisateur(form.getUsername(), encoder.encode(form.getPassword()));
+//
+//        user.setUsername(form.getUsername());
+//        user.setPassword(encoder.encode(form.getPassword()));
+//
+////        user.getRoles().add("STUDENT");
+//
+//        repository.save(user);
         try {
             Utilisateur user = new Utilisateur();//new Utilisateur(form.getUsername(), encoder.encode(form.getPassword()));
 
             user.setUsername(form.getUsername());
             user.setPassword(encoder.encode(form.getPassword()));
 
-            user.getRoles().add("STUDENT");
-
             repository.save(user);
         }
         catch(Exception exception) {
             throw new AlreadyExistsException(form.getUsername(), "username");
         }
+
+//        Utilisateur user = new Utilisateur(form.getUsername(), encoder.encode(form.getPassword()));
+//        user.getRoles().add("STUDENT");
+//        repository.save(user);
     }
 
     public List<UtilisateurDTO> readAll(String role) {
